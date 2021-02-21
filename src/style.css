@@ -44,6 +44,10 @@ form {
   padding-bottom: 20px;
 }
 
+button i {
+  padding-right: 5px;
+}
+
 .date {
   text-align: center;
   font-size: 20px;
@@ -133,8 +137,13 @@ form {
   background-color: #0f3057;
   border-color: #0f3057;
   display: block;
+  font-size: 15px;
+  font-family: "Raleway", sans-serif;
+  padding: 6px 20px;
+}
+
+.find-me-button {
   margin: 0 auto;
-  width: 155px;
 }
 
 .change-city button:hover {
