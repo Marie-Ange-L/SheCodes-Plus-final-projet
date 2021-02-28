@@ -1,5 +1,3 @@
-// Date functions
-
 function formatDate() {
   let days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   let months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
@@ -32,8 +30,6 @@ function formatHours(timestamp) {
   return `${hours}:${minutes}`;
 }
 
-
-
 function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
@@ -43,13 +39,6 @@ let time = new Date();
 let today = document.querySelector("#date");
 today.innerHTML = formatDate();
 
-
-// Date functions - END
-
-
-
-
-// Search API 
 
 function getWeather(response) {
   document.querySelector("#current-city-1").innerHTML = response.data.name;
@@ -71,7 +60,6 @@ function getWeather(response) {
   );
   celsiusTemperature = response.data.main.temp;
 }
-
 
 
 function getForecast(response){
@@ -124,7 +112,7 @@ searchForm.addEventListener("submit", refresh);
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
-searchCity("Lille");
+searchCity("Toulouse");
 
 function convertToFahrenheit(event) {
   event.preventDefault();

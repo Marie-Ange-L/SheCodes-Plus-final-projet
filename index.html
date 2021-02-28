@@ -29,7 +29,7 @@
           <div class="col-xs-9 col-md-4">
         <img src="img/logo.svg" alt="" /></div>
         <div class="col-xs-9 col-md-8">
-        <h1>Welcome to my weather app!</h1></div>
+        <h1>Welcome to my weather&nbsp;app!</h1></div>
         </div>
       </div>
       <div class="weather">
@@ -56,7 +56,7 @@
           <a href="#" id="farenheit-link">Farenheit</a>
         </p>
       </div>
-      <h2>And for the next few hours:</h2>
+      <h2>And in the next few hours:</h2>
       <div class="weather-next-days">
         <div class="row" id="forecast">
         </div>
@@ -64,7 +64,7 @@
       
       </div>
       <div class="change-city">
-        <h3>You don't live in <span id="current-city-2">*city*</span>?</h3>
+        <h3>You don't live in <span id="current-city-2"></span>?</h3>
         <p>🤷‍♀️ Too bad!</p>
         <p>Just kidding. You can search your city right here:</p>
         <form id="search-form">
@@ -78,6 +78,8 @@
                   aria-describedby="emailHelp"
                   placeholder="Type your location"
                   autocomplete="off"
+                  required
+                  onfocus="this.value=''"
                 />
               </div>
             </div>
