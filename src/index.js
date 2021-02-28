@@ -84,10 +84,16 @@ function getWeather(response) {
   document.querySelector("#current-city-1").innerHTML = response.data.name;
   document.querySelector("#current-city-2").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp) + "°C";;
+    response.data.main.temp) + "°C";
+    document.querySelector("#weather-description").innerHTML = response.data.weather[0].description;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
+  );
+  let iconElement = document.querySelector("#weather-icon")
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
   );
   celsiusTemperature = response.data.main.temp;
 }
