@@ -55,7 +55,7 @@ function getWeather(response) {
   document.querySelector("#current-city-1").innerHTML = response.data.name;
   document.querySelector("#current-city-2").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp) + "°C";
+    response.data.main.temp) + "°<small>C</small>";
     document.querySelector("#weather-description").innerHTML = response.data.weather[0].description;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
@@ -66,6 +66,9 @@ function getWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
   );
+  iconElement.setAttribute (
+    "alt", response.data.weather[0].description
+  );
   celsiusTemperature = response.data.main.temp;
 }
 
@@ -75,7 +78,6 @@ function getForecast(response){
 let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = null;
   let forecast = null;
-
   for (let index = 0; index < 5; index++) {
     forecast = response.data.list[index];
     forecastElement.innerHTML += `<div class="next-days col-2 rounded-3 border sp-1">
@@ -85,7 +87,7 @@ let forecastElement = document.querySelector("#forecast");
           forecast.weather[0].icon
         }@2x.png"
       />
-      <br />${Math.round(forecast.main.temp)}°
+      <br />${Math.round(forecast.main.temp)}°<small>C</small>
             </p>
            
           </div>`;
@@ -128,13 +130,13 @@ function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
   let farenheitTemperature = (celsiusTemperature *9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(farenheitTemperature) + "°F";
+  temperatureElement.innerHTML = Math.round(farenheitTemperature) + "°<small>F</small>";
  }
 
 function convertToCelsius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature) + "°C";
+  temperatureElement.innerHTML = Math.round(celsiusTemperature) + "°<small>C</small>";
  }
 
 
