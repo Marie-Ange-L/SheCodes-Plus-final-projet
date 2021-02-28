@@ -116,13 +116,21 @@ button i {
 
 .weather-next-days div {
   margin: 0 auto;
+  padding-top: 0;
 }
 
 .next-days {
-  background-color: #f4f4f4;
+  background-color: #fff;
   margin: 2px;
   text-align: center;
   padding: 12px 0;
+}
+
+.next-days img {
+  display: inline;
+  width: 40px;
+  padding: 0;
+  margin-bottom: 5px;
 }
 
 .next-days p {

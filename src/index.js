@@ -18,41 +18,21 @@ function formatDate() {
   return sentence;
 }
 
-function formatShortDate1() {
-  let shortdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  let shortday = shortdays[time.getDay()+1];
-  let date = time.getDate()+1;
-  let sentence = `${shortday}. ${date}`;
-  return sentence;
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hours}:${minutes}`;
 }
-function formatShortDate2() {
-  let shortdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  let shortday = shortdays[time.getDay()+2];
-  let date = time.getDate()+2;
-  let sentence = `${shortday}. ${date}`;
-  return sentence;
-}
-function formatShortDate3() {
-  let shortdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  let shortday = shortdays[time.getDay()+3];
-  let date = time.getDate()+3;
-  let sentence = `${shortday}. ${date}`;
-  return sentence;
-}
-function formatShortDate4() {
-  let shortdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  let shortday = shortdays[time.getDay()+4];
-  let date = time.getDate()+4;
-  let sentence = `${shortday}. ${date}`;
-  return sentence;
-}
-function formatShortDate5() {
-  let shortdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  let shortday = shortdays[time.getDay()+5];
-  let date = time.getDate()+5;
-  let sentence = `${shortday}. ${date}`;
-  return sentence;
-}
+
+
 
 function getCurrentLocation(event) {
   event.preventDefault();
@@ -62,16 +42,7 @@ function getCurrentLocation(event) {
 let time = new Date();
 let today = document.querySelector("#date");
 today.innerHTML = formatDate();
-let day1 = document.querySelector("#day-1")
-day1.innerHTML = formatShortDate1();
-let day2 = document.querySelector("#day-2")
-day2.innerHTML = formatShortDate2();
-let day3 = document.querySelector("#day-3")
-day3.innerHTML = formatShortDate3();
-let day4 = document.querySelector("#day-4")
-day4.innerHTML = formatShortDate4();
-let day5 = document.querySelector("#day-5")
-day5.innerHTML = formatShortDate5();
+
 
 // Date functions - END
 
@@ -98,11 +69,36 @@ function getWeather(response) {
   celsiusTemperature = response.data.main.temp;
 }
 
+
+
+function getForecast(response){
+let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 5; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `<div class="next-days col-2 rounded-3 border sp-1">
+     <p class="short-date"><span>${formatHours(forecast.dt * 1000)}</span></p>
+    <p><img
+        src="http://openweathermap.org/img/wn/${
+          forecast.weather[0].icon
+        }@2x.png"
+      />
+      <br />${Math.round(forecast.main.temp)}°
+            </p>
+           
+          </div>`;
+}
+}
+
 function searchCity(city) {
-    let apiKey = "c3a45ccf88ff19c1e83029ef1f84c87f";
-  let apiDomain = "https://api.openweathermap.org/data/2.5/weather";
-  let apiUrl = `${apiDomain}?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(getWeather);
+  let apiKey = "c3a45ccf88ff19c1e83029ef1f84c87f";
+  let apiDomain = "https://api.openweathermap.org/data/2.5/";
+  let apiUrl = `${apiDomain}weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(getWeather); 
+  apiUrl = `${apiDomain}forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(getForecast);
 }
 
 function refresh(event) {
