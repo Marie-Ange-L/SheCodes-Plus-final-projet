@@ -30,10 +30,7 @@ function formatHours(timestamp) {
   return `${hours}:${minutes}`;
 }
 
-function getCurrentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchLocation);
-}
+
 
 let time = new Date();
 let today = document.querySelector("#date");
@@ -101,9 +98,16 @@ function searchLocation(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let apiKey = "0b05732c31f31d299fde388ef85a7016";
-  let apiDomain = "https://api.openweathermap.org/data/2.5/weather";
-  let apiUrl = `${apiDomain}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  let apiDomain = "https://api.openweathermap.org/data/2.5/";
+  let apiUrl = `${apiDomain}weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(getWeather);
+  apiUrl = `${apiDomain}forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(getForecast);
+}
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
 let searchForm = document.querySelector("#search-form");
