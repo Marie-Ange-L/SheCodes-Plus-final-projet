@@ -25,8 +25,12 @@
   <body>
     <div class="container">
       <div class="header">
-        <img src="img/logo.svg" alt="" />
-        <h1>Welcome to my weather app!</h1>
+        <div class="row">
+          <div class="col-xs-9 col-md-4">
+        <img src="img/logo.svg" alt="" /></div>
+        <div class="col-xs-9 col-md-8">
+        <h1>Welcome to my weather app!</h1></div>
+        </div>
       </div>
       <div class="weather">
         <h2>Get ready for today:</h2>
@@ -48,11 +52,11 @@
           </p>
         </div>
         <p class="units">
-          Display temperature in: <a href="#" id="celsius-link">Celsius</a> |
+          Display current temperature in: <a href="#" id="celsius-link">Celsius</a> |
           <a href="#" id="farenheit-link">Farenheit</a>
         </p>
       </div>
-      <h2>What about in the next few hours?</h2>
+      <h2>And for the next few hours:</h2>
       <div class="weather-next-days">
         <div class="row" id="forecast">
         </div>
@@ -89,7 +93,7 @@
           </div>
         </form>
         <p>
-          Or click below and authorize your browser to let us know where you
+          Or let us know where you
           are:
         </p>
         <button

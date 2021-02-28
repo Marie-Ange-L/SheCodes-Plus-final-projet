@@ -6,33 +6,35 @@ body {
 h1 {
   color: #0f3057;
   font-family: "Poppins", sans-serif;
-  font-size: 30px;
-  padding-bottom: 20px;
+  font-size: 22px;
+  padding: 40px 15px 0 15px;
   text-align: center;
 }
 
 h2 {
   color: #00587a;
   font-family: "Poppins", sans-serif;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   text-align: center;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 h3 {
   color: #0f3057;
   font-family: "Poppins", sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
-  padding-top: 20px;
+  padding-top: 15px;
 }
 
 img {
   display: block;
   margin: 0 auto;
-  padding: 25px;
-  width: 300px;
+  padding-top: 15px;
+  margin-bottom: -15px;
+  width: 100%;
+  max-width: 200px;
 }
 
 p {
@@ -50,8 +52,9 @@ button i {
 
 .date {
   text-align: center;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 800px;
+  line-height: 14px;
 }
 
 .weather a {
@@ -120,7 +123,6 @@ button i {
 }
 
 .next-days {
-  background-color: #fff;
   margin: 2px;
   text-align: center;
   padding: 12px 0;
@@ -147,7 +149,7 @@ button i {
 }
 
 .change-city {
-  padding-top: 25px;
+  padding: 25px 12px 0 12px;
 }
 .change-city p {
   font-size: 14px;
