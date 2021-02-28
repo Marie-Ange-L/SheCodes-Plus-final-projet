@@ -53,7 +53,7 @@ function getWeather(response) {
   let iconElement = document.querySelector("#weather-icon")
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
   );
   iconElement.setAttribute (
     "alt", response.data.weather[0].description
@@ -71,7 +71,7 @@ let forecastElement = document.querySelector("#forecast");
     forecastElement.innerHTML += `<div class="next-days col-2 rounded-3 border sp-1">
      <p class="short-date"><span>${formatHours(forecast.dt * 1000)}</span></p>
     <p><img
-        src="http://openweathermap.org/img/wn/${
+        src="https://openweathermap.org/img/wn/${
           forecast.weather[0].icon
         }@2x.png"
       />
