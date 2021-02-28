@@ -50,7 +50,7 @@ button i {
 
 .date {
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800px;
 }
 
@@ -118,7 +118,7 @@ button i {
   margin: 0;
 }
 
-.next-days span {
+.short-date span {
   color: #0f0f0f;
   font-weight: 500;
   font-size: 14px;
